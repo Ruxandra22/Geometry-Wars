@@ -1,0 +1,44 @@
+
+                          GEOMETRY WARS
+                -	ELEMENTE DE GRAFICA PE CALCULATOR     -  
+
+
+-	Implementare in Laborator3_Vis2D
+
+1.	Pentru crearea navei, am facut in Object.cpp o functie in care am dat coor-
+donatele celor doua triunghiuri, iar prin intermediul lui GL_TRIANGLES le-am 
+desenat. Asemanator am procedat si cu inamicii, vietile si proiectilele, facandu-le
+ de dimensiuni corespunzatoare.
+2.	Am desenat nava, translatand-o in mijlocul ecranului si scaland-o in metoda 
+DrawScene. Rotirea navei dupa mouse am realizat-o in urmatorul mod:
+a.	In metoda OnMouseMove am calculat unghiul navei catre mouse, cu arctg, pe 
+care l-am folosit uterior in apelul functiei de rotatie al navei.
+3.	Urmatorul pas a fost crearea inamicilor, pentru care am folosit o noua 
+structura in care am declarant campuri pentru x, y culoare, vieti si unghi. La 
+fiecare 2 secunde am calculat o pozitie si un unghi random  pentru inamici si 
+de asemenea, unii au o viata si culoarea albastra, iar altii 2 vieti si culoarea
+ galbena. La final, i-am adaugat intr-un vector. De asemenea, am calculat unghiul
+ pentru care inamicii trebuie sa se deplaseze dupa nava mea.
+Pentru a face ca intervalul in care apar inamicii sa se miscoreze pana la valoarea
+ de 0.5 secunde, mi-am luat o variabila cu valoarea 0 initial si am calculate 
+ timpul dupa formula: 
+time = time + 2 – 0.1 * acea variabila (variabila se incrementa cu 1 de fiecare
+data). Atfel, pentru a ajunge la un interval de 0.5 secunde intre aparitiile ina-
+miciilor, timpul aceasta trebuia sa se modifice de 15 ori; dupa, ramanea constan
+ la 0.5.
+4.	Pasul urmator a fost crearea proiectilelor(de culoare verde), ce  au viteza 
+de 0.5, iar pozitiile lor sunt calculate in functie deunghiul navei fata de mouse.
+5.	Coliziunile:
+-	Nava – inamici: calculez distanta dintre doua puncta ce reprezinta inamicul 
+sin ava si daca acea distanta este mai mica decat  0.2, atunci dispar inamicii 
+si o viata a navei.
+-	Inamici – proiectile: calculez distanmta dintre ele si daca este mai mica 
+decat 0.2, atunci dispar inamicii si proiectilele. Daca un inamic a avut o viata,
+ atunci dispare, iar daca a avut 2 vieti, atunci se face rosu.
+6.	Animatia de la final: cand nava mea are 0 vieti, ecranul se face rosu si 
+jocul se blocheaza.
+
+Utilizarea aplicatiei:
+-	Tastele W, A, S, D pentru sus, stanga, jos, dreapta;
+-	Click stanga pentru a trage cu proiectile;
+-	Nava se misca dupa pozitia mouselui;
